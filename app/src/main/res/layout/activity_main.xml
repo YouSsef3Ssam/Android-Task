@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="isOpened"
+            type="java.lang.Boolean" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".view.main.MainActivity">
+
+        <fragment
+            android:id="@+id/navHostFragment"
+            android:name="androidx.navigation.fragment.NavHostFragment"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:defaultNavHost="true"
+            app:layout_constraintBottom_toTopOf="@+id/navigation"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:navGraph="@navigation/nav_graph" />
+
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/navigation"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:itemTextAppearance="@style/MineCustomTabText"
+            app:labelVisibilityMode="labeled"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:menu="@menu/navigation_bottom" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/bellManFab"
+            style="@style/Widget.MaterialComponents.FloatingActionButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_margin="16dp"
+            android:outlineAmbientShadowColor="@color/colorWhite"
+            android:outlineSpotShadowColor="@color/colorWhite"
+            android:src="@drawable/bellman_bottom_icon"
+            app:backgroundTint="@color/colorAccent"
+            app:elevation="10dp"
+            app:layout_constraintBottom_toTopOf="@id/navigation"
+            app:layout_constraintEnd_toStartOf="@id/navigation"
+            app:layout_constraintStart_toEndOf="@id/navigation"
+            app:layout_constraintTop_toBottomOf="@id/navigation"
+            app:layout_constraintTop_toTopOf="@id/navigation"
+            app:layout_insetEdge="bottom" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/hotspotFab"
+            style="@style/Widget.MaterialComponents.FloatingActionButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="32dp"
+            android:src="@drawable/hotspot_icon"
+            android:visibility="@{isOpened ? View.VISIBLE : View.GONE}"
+            app:backgroundTint="@color/colorWhite"
+            app:elevation="10dp"
+            app:layout_constraintBottom_toBottomOf="@id/bellManFab"
+            app:layout_constraintEnd_toStartOf="@+id/bellManFab"
+            app:layout_constraintTop_toTopOf="@id/bellManFab"
+            app:layout_insetEdge="bottom" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/mapFab"
+            style="@style/Widget.MaterialComponents.FloatingActionButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:src="@drawable/small_grey_location_pin"
+            android:visibility="@{isOpened ? View.VISIBLE : View.GONE}"
+            app:backgroundTint="@color/colorWhite"
+            app:elevation="10dp"
+            app:layout_constraintBottom_toBottomOf="@id/bellManFab"
+            app:layout_constraintStart_toEndOf="@+id/bellManFab"
+            app:layout_constraintTop_toTopOf="@id/bellManFab"
+            app:layout_insetEdge="bottom" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/eventsFab"
+            style="@style/Widget.MaterialComponents.FloatingActionButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:src="@drawable/events_icon"
+            android:visibility="@{isOpened ? View.VISIBLE : View.GONE}"
+            app:backgroundTint="@color/colorWhite"
+            app:elevation="10dp"
+            app:layout_constraintBottom_toTopOf="@id/bellManFab"
+            app:layout_constraintEnd_toStartOf="@id/bellManFab"
+            app:layout_constraintStart_toEndOf="@+id/hotspotFab"
+            app:layout_insetEdge="bottom" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/attractionFab"
+            style="@style/Widget.MaterialComponents.FloatingActionButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:src="@drawable/attarctions_icon"
+            android:visibility="@{isOpened ? View.VISIBLE : View.GONE}"
+            app:backgroundTint="@color/colorWhite"
+            app:elevation="10dp"
+            app:layout_constraintBottom_toTopOf="@id/bellManFab"
+            app:layout_constraintEnd_toStartOf="@id/mapFab"
+            app:layout_constraintStart_toEndOf="@+id/bellManFab"
+            app:layout_insetEdge="bottom" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

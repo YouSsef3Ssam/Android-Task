@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="isLoading"
+            type="java.lang.Boolean" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".view.home.HomeFragment">
+
+        <ImageView
+            android:id="@+id/header"
+            android:layout_width="0dp"
+            android:layout_height="150dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/big_header"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/searchET"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="48dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="48dp"
+            android:background="@drawable/back_solid_white"
+            android:drawableStart="@drawable/search_icon"
+            android:drawablePadding="4dp"
+            android:focusableInTouchMode="true"
+            android:hint="@string/search_hint"
+            android:imeOptions="actionSearch"
+            android:inputType="text"
+            android:padding="12dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/placeTV"
+            tools:ignore="Autofill" />
+
+        <TextView
+            android:id="@+id/youAreTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/you_are_in"
+            android:textColor="@color/colorWhite"
+            app:layout_constraintStart_toStartOf="@id/header"
+            app:layout_constraintTop_toTopOf="@id/header" />
+
+        <ImageView
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_marginStart="8dp"
+            android:src="@drawable/location_white"
+            app:layout_constraintBottom_toBottomOf="@+id/placeTV"
+            app:layout_constraintStart_toStartOf="@id/header"
+            app:layout_constraintTop_toTopOf="@id/placeTV" />
+
+        <TextView
+            android:id="@+id/placeTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:drawablePadding="8dp"
+            android:gravity="center"
+            android:text="@string/misr_al_gadida_egypt"
+            android:textColor="@color/colorWhite"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@id/header"
+            app:layout_constraintTop_toBottomOf="@id/youAreTV" />
+
+        <ImageView
+            android:id="@+id/filter"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="12dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:src="@drawable/filter_inside_search"
+            app:layout_constraintBottom_toBottomOf="@id/searchET"
+            app:layout_constraintEnd_toEndOf="@id/searchET"
+            app:layout_constraintTop_toTopOf="@id/searchET" />
+
+        <ImageView
+            android:id="@+id/notification"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginEnd="8dp"
+            android:src="@drawable/notification_grey_bottom_icon"
+            app:layout_constraintBottom_toTopOf="@id/placeTV"
+            app:layout_constraintEnd_toStartOf="@id/calender"
+            app:layout_constraintTop_toBottomOf="@id/youAreTV" />
+
+        <ImageView
+            android:id="@+id/calender"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginEnd="12dp"
+            android:src="@drawable/calendar"
+            app:layout_constraintBottom_toBottomOf="@id/searchET"
+            app:layout_constraintBottom_toTopOf="@id/placeTV"
+            app:layout_constraintEnd_toEndOf="@id/header"
+            app:layout_constraintTop_toBottomOf="@id/youAreTV" />
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="@{isLoading ? View.VISIBLE : View.GONE}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ScrollView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:visibility="@{isLoading ? View.GONE : View.VISIBLE}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/header">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingBottom="64dp">
+
+                <TextView
+                    android:id="@+id/hotspotTv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:drawableStart="@drawable/hotspot_icon"
+                    android:drawablePadding="8dp"
+                    android:gravity="center"
+                    android:text="@string/hotspots"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/hotspotViewAll"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:drawableEnd="@drawable/view_all_icon"
+                    android:drawablePadding="8dp"
+                    android:text="@string/view_all"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toBottomOf="@id/hotspotTv"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/hotspotTv" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/hotspotsRecyclerView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/hotspotTv" />
+
+                <TextView
+                    android:id="@+id/eventTv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="64dp"
+                    android:drawableStart="@drawable/events_icon"
+                    android:drawablePadding="8dp"
+                    android:gravity="center"
+                    android:text="@string/event"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/hotspotsRecyclerView" />
+
+                <TextView
+                    android:id="@+id/eventViewAll"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:drawableEnd="@drawable/view_all_icon"
+                    android:drawablePadding="8dp"
+                    android:text="@string/view_all"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toBottomOf="@id/eventTv"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/eventTv" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/eventsRecyclerView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/eventTv" />
+
+                <TextView
+                    android:id="@+id/attractionTv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="64dp"
+                    android:drawableStart="@drawable/attarctions_icon"
+                    android:drawablePadding="8dp"
+                    android:gravity="center"
+                    android:text="@string/attractions"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/eventsRecyclerView" />
+
+                <TextView
+                    android:id="@+id/attractionViewAll"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:drawableEnd="@drawable/view_all_icon"
+                    android:drawablePadding="8dp"
+                    android:text="@string/view_all"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toBottomOf="@id/attractionTv"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/attractionTv" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/attractionRecyclerView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/attractionTv" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
